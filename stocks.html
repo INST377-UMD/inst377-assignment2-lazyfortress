@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stocks - INST377 Activities</title>
+    <link rel="stylesheet" href="a2styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>INST377 - Activities</h1>
+        <nav>
+        <ul>
+            <li><a href="a2home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+    <h2>Enter in a stock ticker to see a chart</h2>
+
+    <div class="lookup-container">
+        <select id="range">
+            <option value="30">30 Days</option>
+            <option value="60">60 Days</option>
+            <option value="90">90 Days</option>
+        </select>
+        <input type="text" id="tickerInput" placeholder="Enter stock ticker (e.g., AAPL)" />
+        <button class="button-52" onclick="lookupStock()">Lookup!</button>
+    </div>
+
+    <canvas id="stockChart" width="800" height="400"></canvas>
+
+    <h3>Top 5 Reddit Stocks</h3>
+    <table id="stockTable">
+        <thead>
+            <tr>
+                <th>Ticker</th>
+                <th>Comment Count</th>
+                <th>Sentiment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamically inserted -->
+        </tbody>
+    </table>
+
+    <div class="audio-box">
+        <h3>In this web page there are options to Navigate using Audio!</h3>
+        <p>Ensure your Mic is enabled to be able to use this feature</p>
+        <ul>
+            <li><strong>Lookup a stock</strong>: Say <code>Lookup &lt;stock ticker&gt;</code></li>
+            <li><strong>Navigate to a Different Page</strong>: Say <code>Navigate to &lt;page&gt;</code></li>
+            <li><strong>Change the Page Color</strong>: Say <code>Change the color to &lt;color&gt;</code></li>
+            <li><strong>Say Hello Back</strong>: Say <code>Hello</code></li>
+        </ul>
+        <button onclick="startListening()">Turn On Listening</button>
+        <button onclick="stopListening()">Turn Off Listening</button>
+    </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="stocks.js"></script>
+</body>
+</html>

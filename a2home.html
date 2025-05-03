@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>INST377 - Home</title>
+    <link rel="stylesheet" href="a2styles.css">
+    <script src="a2script.js"></script>
+</head>
+<body>
+<header>
+    <h1>INST377 - Home</h1>
+    <nav>
+      <ul>
+        <li><a href="a2home.html">Home</a></li>
+        <li><a href="stocks.html">Stocks</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+      </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Various page attributes: </h2>
+    <div class="button-container">
+        <button class="button-52" onclick="location.href='stocks.html'">Stocks</button>
+        <button class="button-52" onclick="location.href='dogs.html'">Dogs</button>
+    </div>
+
+    <div id="quote-box" class="quote-box">
+        <strong>Random Quote</strong>
+        <p id="quote-text">Loading quote...</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>In this web page, there are options to navigate via audio.</h3>
+        <p>Ensure your microphone is enabled in order to use this feature</p>
+        <ul>
+            <li><strong>Navigate to a Different Page</strong>: Say <code>Navigate to &lt;page&gt;</code></li>
+            <li><strong>Change the Page Color</strong>: Say <code>Change the color to &lt;color&gt;</code></li>
+            <li><strong>Say Hello Back</strong>: Say <code>Hello</code></li>
+        </ul>
+        <button onclick="startListening()">Turn On Listening</button>
+        <button onclick="stopListening()">Turn Off Listening</button>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+</body>
+</html>
