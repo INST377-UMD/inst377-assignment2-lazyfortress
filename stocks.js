@@ -11,7 +11,7 @@ async function lookupStock() {
     try {
         const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${epochToDate(from)}/${epochToDate(today)}?adjusted=true&sort=asc&limit=${days}&apiKey=${apiKey}`);
         const data = await response.json();
-        // need to fix epochToDate
+        // need to fix epochToDate - FIXED
         const labels = data.results.map(item => formatForChart(item.t));
         const prices = data.results.map(item => item.c);
 
@@ -20,7 +20,7 @@ async function lookupStock() {
         alert("Failed to fetch stock data. Check your ticker and API key.");
     }
 }
-// NEED TO FIX; returns unusable date format
+// NEED TO FIX; returns unusable date format - FIXED
 function epochToDate(epoch) {
     return new Date(epoch * 1000).toISOString().split('T')[0];
 }
@@ -50,6 +50,7 @@ function renderChart(ticker, labels, prices) {
         responsive: true
         }
     });
+    document.getElementById('stockChart').style.backgroundColor = 'white';
 }
 
 async function loadRedditStocks() {
