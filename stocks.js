@@ -17,7 +17,7 @@ async function lookupStock() {
 
         renderChart(ticker, labels, prices);
     } catch (err) {
-        alert("Failed to fetch stock data. Check your ticker and API key.");
+        alert("Failed to get chart data");
     }
 }
 // NEED TO FIX; returns unusable date format - FIXED
@@ -37,17 +37,17 @@ function renderChart(ticker, labels, prices) {
     chart = new Chart(ctx, {
         type: 'line',
         data: {
-        labels: labels,
-        datasets: [{
-            label: `${ticker} Closing Prices`,
-            data: prices,
-            fill: false,
-            borderColor: 'blue',
-            tension: 0.1
-        }]
+            labels: labels,
+            datasets: [{
+                label: `${ticker} Closing Prices`,
+                data: prices,
+                fill: false,
+                borderColor: 'blue',
+                tension: 0.1
+            }]
         },
         options: {
-        responsive: true
+            responsive: true
         }
     });
     document.getElementById('stockChart').style.backgroundColor = 'white';
@@ -73,7 +73,7 @@ async function loadRedditStocks() {
             <td><img src="${item.sentiment === 'Bullish' ? bullImg : bearImg}" alt="${item.sentiment}" width="50"/></td>`;
         table.appendChild(row);
         });
-    } catch (err) {
+    } catch (error) {
         console.error('Failed to load Reddit stocks');
     }
 }

@@ -12,20 +12,20 @@ fetch("https://zenquotes.io/api/random")
 function startListening() {
     if (annyang) {
         const commands = {
-        "hello": () => alert("Hello World"),
-        "change the color to *color": (color) => {
-            document.body.style.backgroundColor = color;
-        },
-        "navigate to *page": (page) => {
-            const lower = page.toLowerCase();
-            if (["stocks", "dogs"].includes(lower)) {
-                // String literal; 
-                window.location.href = `${lower}.html`;
+            "hello": () => alert("Hello World"),
+            "change the color to *color": (color) => {
+                document.body.style.backgroundColor = color;
+            },
+            "navigate to *page": (page) => {
+                const lower = page.toLowerCase();
+                if (["stocks", "dogs"].includes(lower)) {
+                    // String literal; 
+                    window.location.href = `${lower}.html`;
+                }
+                if (["home"].includes(lower)){
+                    window.location.href = `a2${lower}.html`;
+                }
             }
-            if (["home"].includes(lower)){
-                window.location.href = `a2${lower}.html`;
-            }
-        }
         };
     annyang.addCommands(commands);
     annyang.start();
@@ -34,6 +34,6 @@ function startListening() {
 
 function stopListening() {
     if (annyang) {
-    annyang.abort();
+        annyang.abort();
     }
 }

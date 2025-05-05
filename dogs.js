@@ -1,7 +1,7 @@
 //  Array for breed ID and breed name
 const breedNameToId = {};
 
-// Create arousel with random dog images
+// Create carousel with random dog images
 async function initCarousel() {
     try {
         const response = await fetch('https://dog.ceo/api/breeds/image/random/10');
@@ -19,7 +19,7 @@ async function initCarousel() {
     }
 }
 
-// Fetch and display breed buttons
+// Fetch and display dog breed buttons
 async function loadBreedButtons() {
     try {
         const response = await fetch('https://dogapi.dog/api/v2/breeds');
@@ -73,32 +73,32 @@ async function loadBreedInfo(id) {
 
 // Voice command setup
 function setupVoiceCommands() {
-  if (annyang) {
-    const commands = {
-        'load dog breed *breed': (breed) => {
-            const formattedBreed = breed.toLowerCase();
-            const breedId = breedNameToId[formattedBreed];
-            if (breedId) {
-            loadBreedInfo(breedId);
-            } else {
-            alert(`Could not find breed: "${breed}"`);
+    if (annyang) {
+        const commands = {
+            'load dog breed *breed': (breed) => {
+                const formattedBreed = breed.toLowerCase();
+                const breedId = breedNameToId[formattedBreed];
+                if (breedId) {
+                    loadBreedInfo(breedId);
+                } else {
+                    alert(`Could not find breed: "${breed}"`);
+                }
+            },
+            'navigate to *page': (page) => {
+                const lower = page.toLowerCase();
+                if (['stocks', 'dogs'].includes(lower)) {
+                    window.location.href = `${lower}.html`;
+                }
+                if (["home"].includes(lower)){
+                    window.location.href = `a2${lower}.html`;
+                }
+            },
+            'change the color to *color': (color) => {
+                document.body.style.backgroundColor = color;
+            },
+            'hello': () => {
+                alert('Hello World');
             }
-        },
-        'navigate to *page': (page) => {
-            const lower = page.toLowerCase();
-            if (['stocks', 'dogs'].includes(lower)) {
-            window.location.href = `${lower}.html`;
-            }
-            if (["home"].includes(lower)){
-                window.location.href = `a2${lower}.html`;
-            }
-        },
-        'change the color to *color': (color) => {
-            document.body.style.backgroundColor = color;
-        },
-        'hello': () => {
-            alert('Hello World');
-        }
         };
         annyang.addCommands(commands);
     }
