@@ -16,7 +16,7 @@ async function lookupStock() {
         const prices = data.results.map(item => item.c);
 
         renderChart(ticker, labels, prices);
-    } catch (err) {
+    } catch (error) {
         alert("Failed to get chart data");
     }
 }
